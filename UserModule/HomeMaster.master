@@ -1,0 +1,183 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HomeMaster.master.cs" Inherits="CASApp1.UserModule.HomeMaster" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Home</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: none;
+        }
+
+        .header-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dashboard-title h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+
+        .nav-left {
+            display: flex;
+            gap: 5px;
+            flex-grow: 1;
+            flex-shrink: 1;
+            min-width: 0;
+            max-width: calc(100% - 100px);
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            flex-shrink: 0;
+            width: 100px;
+            justify-content: flex-end;
+            white-space: nowrap;
+        }
+
+
+        .nav-button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px 10px;
+            border-radius: 6px;
+        }
+
+        .nav-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+
+
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px);
+        }
+
+        .container {
+            padding-top: 70px;
+            padding-bottom: 60px;
+        }
+
+        .content-box {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+            .content-box h2 {
+                margin-bottom: 10px;
+            }
+
+        .footer-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: green;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            z-index: 999;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer-content {
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .nav-row {
+                flex-wrap: wrap;
+            }
+
+            .nav-left {
+                flex-wrap: wrap;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-right {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+
+        <!-- Header Bar -->
+        <div class="header-bar">
+            <div class="header-top">
+                <h2><strong>Student Dashboard</strong></h2>
+            </div>
+
+            <div class="nav-row">
+                <!-- Left Column: Navigation Buttons -->
+                <div class="nav-left">
+                    <asp:Button ID="btnHome" runat="server" CssClass="nav-button" Text="Home" OnClick="btnHome_Click" />
+                    <asp:Button ID="btnStaComval" runat="server" CssClass="nav-button" Text="Statistics Computation Validation" OnClick="btnStatComVal_Click" Visible="false" />
+                    <asp:Button ID="btnSimAiWriChe" runat="server" CssClass="nav-button" Text="Similarity & Ai Writing Check" OnClick="btnSimAiWriChe_Click" Visible="false" />
+                    <asp:Button ID="btnCertification" runat="server" CssClass="nav-button" Text="Certification & Remarks" OnClick="btnCertification_Click" />
+                    <asp:Button ID="btnStatistician_List" runat="server" CssClass="nav-button" Text="Statistician List" OnClick="btnStatisticianList_Click" />
+                </div>
+
+                <!-- Right Column: Logout Button -->
+                <div class="nav-right">
+                    <asp:Button ID="btnLogout" runat="server" CssClass="nav-button" Text="Logout" OnClick="btnLogout_Click" />
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Page content placeholder -->
+        <div class="container">
+            <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+        </div>
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </form>
+
+    <footer class="footer-bar">
+        <div class="footer-content">
+            &copy; 2025 Mathematical Modeling Statistic Center — All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
